@@ -120,21 +120,28 @@ include.
 
 #### Installation Steps:
 1. Open terminal:
-  - Windows: Use the Git Bash program (installed with Git) to get a Unix-style terminal.
+  - Windows: Use the Git Bash program (installed with Git) to get a Unix-style
+  terminal.
   - Other systems: Use your favorite terminal program.
 2. Change to the desired parent directory
   - Example: `cd Desktop/`
 3. Using Git, clone this project:
-  - Run: `git clone https://github.com/gravic07/Conference_Central.git Conference_Central`
-  - This will create a directory inside of your parent directory titled *Conference_Central*.
-4. Download the Google App Engine SDK *for Python* using the link listed under **Prerequisites**.
+  - Run: `git clone https://github.com/gravic07/Conference_Central.git
+  Conference_Central`
+  - This will create a directory inside of your parent directory titled
+  *Conference_Central*.
+4. Download the Google App Engine SDK *for Python* using the link listed under
+**Prerequisites**.
 5. Once the SDK is installed, open GoogleAppEngineLauncher.
 6. Under File, select *Add Existing Application...*.
 7. Select *Browse* and navigate to the newly created Conference_Central Folder.
-8. (Optional) Adjust the *Admin Port* and *Port* if desired and make note of both.
+8. (Optional) Adjust the *Admin Port* and *Port* if desired and make note of
+both.
 9. With the newly added application highlighted, press *Run*.
-10. The APIs explorer should now be available at http://localhost:8080/_ah/api/explorer
-  - The url above assumes the default port.  If *Port* was altered in step 8, replace *8080* with the new port provided.
+10. The APIs explorer should now be available at
+http://localhost:8080/_ah/api/explorer
+  - The url above assumes the default port.  If *Port* was altered in step 8,
+  replace *8080* with the new port provided.
 11. Select *conference API* to access all EndPoints.
 
 
@@ -172,7 +179,8 @@ using the conference key.
 
 
 ## Contributing
-In the off chance someone would like to contribute to this project, follow the usual steps:
+In the off chance someone would like to contribute to this project, follow the
+usual steps:
 
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
