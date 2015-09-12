@@ -7,7 +7,7 @@ back end and creating the API.
 
 
 ## Design Decisions
-##### Sessions
+#### Sessions
 Sessions are the individual events that make up a conference.  Sessions can
 have several formats.  Workshop, Lecture, Keynote, Demo and Panel have been
 provided as options for the **SessionType**.  Since you can not have a
@@ -18,7 +18,7 @@ relationship between the conference and the session. In addition to
 unwanted sessions being created, only the creator of a conference can add
 sessions to it.
 
-##### Speakers
+#### Speakers
 In their current capacity, speakers are associated with most sessions as the
 main attraction.  Since a speaker can attend more than one session, or even
 more than one conference, speakers are there own entity with the following
