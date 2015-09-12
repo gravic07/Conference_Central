@@ -38,9 +38,9 @@ sessions within a conference.  When a session is created within
 `_createSessionObject()`, a check is performed on each **speakerKey** that is
 passed in.  For each speakerKey, the number of sessions for the speaker is
 calculated.  The speaker with the most sessions is then set as the featured
-speaker and added to the task queue through `_cacheFeaturedSpeaker()`.  If
-there is a tie for number of sessions, the last speaker passed is assigned
-the featured speaker.
+speaker and added to the task queue through `_cacheFeaturedSpeaker()` to be
+added to memcache.  If there is a tie for number of sessions, the last speaker
+passed is assigned the featured speaker.
 
 #### User Wish Lists
 A User can add sessions to their wish list using `addSessionToWishlist()` and
@@ -139,27 +139,36 @@ include.
 
 
 ## EndPoints
-- **addSessionToWishlist** - Adds an existing Session to a user's Wishlist using the Session's key.
-- **createConference** - Creates a Conference; *name* property is required.
-- **createSession** - Creates a Session; *name* and *parentConfKey* properties are required.
-- **createSpeaker** - Creates a Speaker; *name* property is required.
-- **getAnnouncement** -
-- **getConfSessionsByDate** -
-- **getConfSessionsByType** -
-- **getConference** -
-- **getConferencesCreated** -
-- **getConferencesToAttend** -
-- **getFeaturedSpeaker** -
-- **getProfile** -
-- **getSessionWishlist** -
-- **getSessionsByConference** -
-- **getSessionsBySpeaker** -
-- **getSpeakersByConference** -
-- **queryConferences** -
-- **registerForConference** -
-- **removeSessionFromWishlist** -
-- **saveProfile** -
-- **unregisterFromConference** -
+- **addSessionToWishlist** - Adds an existing session to the authed user's wish
+list using the Session's key.
+- **createConference** - Creates a conference; *name* property is required.
+- **createSession** - Creates a session; *name* and *parentConfKey* properties
+are required.
+- **createSpeaker** - Creates a ppeaker; *name* property is required.
+- **getAnnouncement** - Retrieve announcement for conferences that are almost
+sold out.
+- **getConfSessionsByDate** - Retrieve sessions by conference key and date.
+- **getConfSessionsByType** - Retrieve sessions by conference key and session
+type.
+- **getConference** - Retrieve conference by conference key.
+- **getConferencesCreated** - Retrieve conference created by authed user.
+- **getConferencesToAttend** - Retrieve conferences that authed user has
+registered for.
+- **getFeaturedSpeaker** - Retrieve the current featured speaker from memcache.
+- **getProfile** - Retrieve the profile of the current authed user.
+- **getSessionWishlist** - Retrieve the session wish list for the current
+authed user.
+- **getSessionsByConference** - Retrieve all sessions by conference key.
+- **getSessionsBySpeaker** - Retrieve all sessions by speaker key.
+- **getSpeakersByConference** - Retrieve all speakers by conference key.
+- **queryConferences** - Retrieve conferences based on custom filters.
+- **registerForConference** - Register the authed user for a conference using
+the conference key.
+- **removeSessionFromWishlist** - Removes a session from the authed user's
+Wishlist using the session's key.
+- **saveProfile** - Saves the authed user's profile after editing.
+- **unregisterFromConference** - Unregister the authed user for a conference
+using the conference key.
 
 
 ## Contributing
