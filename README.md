@@ -98,9 +98,12 @@ include.
 | File | Description |
 |------|-------------|
 | **conference.py** | This is the main Python file which contains the ConferenceApi(). |
-| **models.py** | This Python file holds the Model and Message structures for Google's Datastore (ndb). |
-| **main.py** | This Python file contains the HTTP controller handlers for memcache & task queue. |
-| **settings.py** | This Python file holds a user's client IDs. *This file will need to be updated if you are wanting to deploy the application.* |
+| **models.py** | This Python file holds the Model and Message structures for
+Google's Datastore (ndb). |
+| **main.py** | This Python file contains the HTTP controller handlers for
+memcache & task queue. |
+| **settings.py** | This Python file holds a user's client IDs. *This file will
+need to be updated if you are wanting to deploy the application.* |
 | **utils.py** | This Python file holds a utility function to grab a user's ID. |
 | **app.yaml** | Google App Engine configuration file containing application and path information. |
 | **cron.yaml** | Google App Engine configuration file containing settings for scheduled tasks. |
