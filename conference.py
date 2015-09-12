@@ -220,7 +220,6 @@ class ConferenceApi(remote.Service):
 
 # - - - wishList methods - - - - - - - - - - - - - - - - - - -
 
-    # @ndb.transactional(xg=True)  # TODO Do I need this?
     def _sessionWishlist(self, request, add=True):
         """Add or remove a session to a User's wishlist."""
         retval = None
@@ -515,7 +514,8 @@ class ConferenceApi(remote.Service):
         # Check that speakerKeys were passed with request
         if speakers:
             # Adding checks here to prevent task creation if not needed
-            # TODO When submitting, ask if this is more productive?
+            # TODO Is it better to perform these checks here or
+            # in _cacheFeaturedSpeaker?
             s = Session.query(
                 ancestor=ndb.Key(urlsafe=request.parentConfKey))
             # Determine which Speaker is associated with the most Sessions
