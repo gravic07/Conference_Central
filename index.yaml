@@ -99,3 +99,19 @@ indexes:
   properties:
   - name: topics
   - name: name
+
+- kind: Session
+  ancestor: yes
+  properties:
+  - name: __key__
+  - name: typeOfSession
+
+- kind: Session
+  ancestor: yes
+  properties:
+  - name: startTime
+
+- kind: Session
+  ancestor: yes
+  properties:
+  - name: typeOfSession

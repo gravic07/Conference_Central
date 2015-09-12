@@ -48,7 +48,7 @@ class Session(ndb.Model):
     typeOfSession = ndb.StringProperty(default='Not_Specified')
     date          = ndb.DateProperty()
     month         = ndb.IntegerProperty()
-    startTime     = ndb.StringProperty()
+    startTime     = ndb.TimeProperty()
     parentConfKey = ndb.StringProperty()
 
 
@@ -78,9 +78,6 @@ class SessionType(messages.Enum):
     Keynote       = 4
     Demo          = 5
     Panel         = 6
-
-
-
 
 
 class ConflictException(endpoints.ServiceException):
