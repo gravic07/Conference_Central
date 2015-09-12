@@ -242,7 +242,7 @@ class ConferenceApi(remote.Service):
                 'No session found with key: {0}'.format(sesh_key))
         # Get Session parent key and associated Conference
         conference = session.key.parent().get()
-        conf_key = conference.key.urlsafe()  # Add .urlsafe() if needed
+        conf_key = conference.key.urlsafe()
         # Ensure that conference is in User's conferenceKeysToAttend
         if conf_key not in prof.conferenceKeysToAttend:
             raise ConflictException(
