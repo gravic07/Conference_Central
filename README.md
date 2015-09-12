@@ -26,13 +26,13 @@ properties: **name**, **briefBio**, **company** and **projects**.  **name**
 is the only required property for a speaker.  A speaker has no ancestor
 relationship since a speaker can attend multiple conferences and sessions.
 
-##### Session & Speaker Relationship
+#### Session & Speaker Relationship
 A speaker is added to a session using the speaker's key, through the session's
 **speakerKey**.  A session's **speakerKey** property allows for more than one
 speaker since sessions can have multiple speakers or a panel.  Each key is
 passed is verified individually and an exception is thrown if one is invalid.
 
-##### Featured Speakers
+#### Featured Speakers
 A featured speaker is defined as a speaker that is assigned to two or more
 sessions within a conference.  When a session is created within
 `_createSessionObject()`, a check is performed on each **speakerKey** that is
@@ -42,7 +42,7 @@ speaker and added to the task queue through `_cacheFeaturedSpeaker()`.  If
 there is a tie for number of sessions, the last speaker passed is assigned
 the featured speaker.
 
-##### User Wish Lists
+#### User Wish Lists
 A User can add sessions to their wish list using `addSessionToWishlist()` and
 passing in the session key.  A user must be registered to the parent
 conference of a session to add it to their wish list.  The session's key is
@@ -51,7 +51,7 @@ can also remove a session from their wish list using
 `removeSessionFromWishlist()`.  Additionally you can retrieve all sessions in
 a user's wish list by calling getSessionWishlist() while a user is authed.
 
-##### Additional Queries
+#### Additional Queries
 - `getSpeakersByConference()` takes in a conference key and returns all
 speakers in that conference, regardless of session.  This can be used to
 quickly see the speaker lineup for an entire conference.
@@ -60,13 +60,38 @@ all sessions for the parent conference matching the specified date.  This
 would allow a participant to decided what days might be more valuable to them
 based on the sessions that are available.
 
-##### Problem
+#### Query Problem Solution
+**Question posed in project:** Let’s say that you don't like workshops and you
+don't like sessions after 7 pm. How would you handle a query for all non-
+workshop sessions before 7 pm? What is the problem for implementing this query?
+What ways to solve it did you think of?
 
+###### The Problem
+The problem here is that we are trying to perform inequality filters on two
+separate properties.  Within Datastore, inequality filters can only be applied
+to one property.  Additionally, any properties with an inequality filter must
+be sorted first, all though this is not an issue with the above problem.
 
-
-
-
-
+###### Possible Solutions
+- **Comparing two separate queries:** The first solution that I thought of was
+to perform two separate queries, one for sessions no later then 7pm and another
+for sessions that are not workshops.  With both of these queries complete, the
+results can then be compared and only the matching sessions will be returned as
+the result.  
+This was the solution that I used in `getConferenceSessionsByTimeAndType()`
+- **Filter results programmatically:** This solution would perform a query on
+the database and then filter the results using the language of choice; Python
+in this case.  In the above example, we could query for sessions that are not
+workshops and store them locally.  We could then filter the stored results by
+**startTime**.
+- **Combinding properties into new property:** This is a solution that I found
+through a bit of Googling that peaked my interest.  From what I have read, this
+would be a great solution for larger data bases that have a specific multi-
+property inequality filter that is used frequently.  Essentially we would need
+to rewrite the Model and session creation function so that the **startTime**
+property and **typeOfSession** property could be combined into a new value.  
+This one was a little over my head, but I found it interesting enough to
+include.
 
 
 ## Important Files
