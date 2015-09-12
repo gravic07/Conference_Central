@@ -49,7 +49,7 @@ class Session(ndb.Model):
     date          = ndb.DateProperty()
     month         = ndb.IntegerProperty()
     startTime     = ndb.TimeProperty()
-    parentConfKey = ndb.StringProperty()
+    parentConfKey = ndb.StringProperty(required=True)
 
 
 class SessionForm(messages.Message):
