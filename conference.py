@@ -482,7 +482,7 @@ class ConferenceApi(remote.Service):
                     speakers.append(speaker)
                 except Exception:
                     raise endpoints.BadRequestException(
-                        'One of more speakerKeys given are invalid.')
+                        'speakerKey {0} is invalid.'.format(speakerKey))
         # Copy SessionForm/ProtoRPC Message into dict
         data = ({field.name: getattr(request, field.name)
                 for field in request.all_fields()})
