@@ -17,6 +17,7 @@ relationship between the conference and the session. In addition to
 **parentConfKey**, the **name** property is also a required field.  To prevent
 unwanted sessions being created, only the creator of a conference can add
 sessions to it.
+
 | Property | Data Type Choice |
 |----------|------------------|
 | name          | **StringProperty(required=True)** Used string here since the name of the session will be unicode and required this since a session needs a name. |
@@ -36,6 +37,7 @@ more than one conference, speakers are there own entity with the following
 properties: **name**, **briefBio**, **company** and **projects**.  **name**
 is the only required property for a speaker.  A speaker has no ancestor
 relationship since a speaker can attend multiple conferences and sessions.
+
 | Property | Data Type Choice |
 |----------|------------------|
 | name     | **StringProperty(required=True)** I chose a string here since a speakers name should be unicode.  Required this field since a speaker must have a name. |
