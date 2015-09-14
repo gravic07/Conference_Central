@@ -17,6 +17,17 @@ relationship between the conference and the session. In addition to
 **parentConfKey**, the **name** property is also a required field.  To prevent
 unwanted sessions being created, only the creator of a conference can add
 sessions to it.
+| Property | Data Type Choice |
+|----------|------------------|
+| name          | **StringProperty(required=True)** Used string here since the name of the session will be unicode and required this since a session needs a name. |
+| highlights    | **StringProperty()** Highlights will be unicode and shouldn't be more than 1500 bytes so used string instead of text here. |
+| speakerKey    | **StringProperty(repeated=True)** Since a urlsafe key will be made of unicode character, chose a string here and allowed repeat to accommodate multiple speakers. |
+| duration      | **IntegerProperty()** I chose integer for duration to store duration as number of minutes.  I chose to use minutes for duration to aid with inequality filters. |
+| typeOfSession | **StringProperty(default='Not_Specified')** I chose to use enum values for typeOfSession to limit choices of type.  String is used in the message class to allow it to be passed through HTTP. |
+| date          | **DateProperty()** I chose to use a DateProperty here to aid the use of inequality filters. |
+| month         | **IntegerProperty()** I chose to use an integer here since months can easily be represented as 1-12 and this too aids inequality filters. |
+| startTime     | **TimeProperty()** I chose a time property here to allow for searching of times before and/or after a desired time (inequality filters). |
+| parentConfKey | **StringProperty(required=True)** Since a urlsafe key will be made of unicode character, chose a string here and made this a required field since sessions have an ancestor relationship with conferences. |
 
 #### Speakers
 In their current capacity, speakers are associated with most sessions as the
@@ -25,6 +36,12 @@ more than one conference, speakers are there own entity with the following
 properties: **name**, **briefBio**, **company** and **projects**.  **name**
 is the only required property for a speaker.  A speaker has no ancestor
 relationship since a speaker can attend multiple conferences and sessions.
+| Property | Data Type Choice |
+|----------|------------------|
+| name     | **StringProperty(required=True)** I chose a string here since a speakers name should be unicode.  Required this field since a speaker must have a name. |
+| briefBio | **StringProperty()** A *brief* bio should not exceed 1500 characters (bytes) so chose a string instead of text here. |
+| company  | **StringProperty(repeated=True)** A company's name should be unicode so chose string here.  Allow multiple companies for speakers with multiple. |
+| projects | **StringProperty(repeated=True)** A project's name should be unicode so chose string here.  Allow multiple projects since speakers will most likely have more than one project. |
 
 #### Session & Speaker Relationship
 A speaker is added to a session using the speaker's key, through the session's
@@ -46,8 +63,9 @@ passed is assigned the featured speaker.
 A User can add sessions to their wish list using `addSessionToWishlist()` and
 passing in the session key.  A user must be registered to the parent
 conference of a session to add it to their wish list.  The session's key is
-added to the user's profile under the **sessionWishList** property.  A user
-can also remove a session from their wish list using
+added to the user's profile under the **sessionWishList** property.  Since a
+session's key is unicode, I chose to use StringProperty() for the data type.
+A user can also remove a session from their wish list using
 `removeSessionFromWishlist()`.  Additionally you can retrieve all sessions in
 a user's wish list by calling getSessionWishlist() while a user is authed.
 
