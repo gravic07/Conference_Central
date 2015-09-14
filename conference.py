@@ -246,7 +246,7 @@ class ConferenceApi(remote.Service):
         # Ensure that conference is in User's conferenceKeysToAttend
         if conf_key not in prof.conferenceKeysToAttend:
             raise ConflictException(
-                "You must be register for the parent confernce before adding",
+                "You must be register for the parent confernce before adding "
                 "a session to your wishlist.")
         if add:
             # Check if session is already in wishlist
@@ -325,8 +325,7 @@ class ConferenceApi(remote.Service):
         return sf
 
     @endpoints.method(CONF_GET_REQUEST, SessionForms,
-                      path        = 'getSessionsByConference/'
-                                    '{websafeConferenceKey}',
+                      path        = 'sessions/{websafeConferenceKey}',
                       http_method = 'GET',
                       name        = 'getSessionsByConference')
     def getConferenceSessions(self, request):
@@ -548,7 +547,7 @@ class ConferenceApi(remote.Service):
         return request
 
     @endpoints.method(SessionForm, SessionForm,
-                      path        = 'session',
+                      path        = 'sessions',
                       http_method = 'POST',
                       name        = 'createSession')
     def createSession(self, request):
